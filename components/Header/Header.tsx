@@ -47,6 +47,7 @@ export const Header = () => {
                             <Button
                                 onClick={() => setMobileMenuOpen(true)}
                                 size="icon"
+                                variant="secondary"
                                 className="sm:hidden"
                                 aria-label="Open mobile menu"
                             >
@@ -54,11 +55,16 @@ export const Header = () => {
                             </Button>
 
                             {/* auth */}
-                            <div className="flex items-center space-x-3">
+                            <div className="hidden sm:flex items-center space-x-3">
                                 <Button asChild>
                                     <Link href="/auth/login">Sign In</Link>
                                 </Button>
-                                <Button variant="secondary">Get Started</Button>
+
+                                <Button variant="secondary" asChild>
+                                    <Link href="/auth/register">
+                                        Get Started
+                                    </Link>
+                                </Button>
                             </div>
                         </div>
                     </div>

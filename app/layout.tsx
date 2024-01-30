@@ -1,9 +1,9 @@
+import { Header } from '@/components/Header/Header'
 import { fontSans } from '@/components/font'
-import { ThemeProvider } from '@/providers/theme-provider'
 import { cn } from '@/lib/utils'
+import { ThemeProvider } from '@/providers/theme-provider'
 import type { Metadata } from 'next'
 import './globals.css'
-import { Header } from '@/components/Header/Header'
 
 export const metadata: Metadata = {
     title: 'NikeCommerce',
