@@ -22,6 +22,7 @@ export const ROUTES = {
     DASHBOARD: {
         SETTINGS: {
             PROFILE: '/settings/profile',
+            PASSWORD: '/settings/password',
             ACCOUNT: '/settings/account',
         },
     },

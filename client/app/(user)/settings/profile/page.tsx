@@ -1,5 +1,5 @@
-import { ProfileForm } from '@/components/user/settings/forms/ProfileForm'
+import { UpdateProfileForm } from '@/components/user/settings/forms/UpdateProfileForm'
 
-export default function Profile() {
-    return <ProfileForm />
+export default function SettingsProfile() {
+    return <UpdateProfileForm />
 }

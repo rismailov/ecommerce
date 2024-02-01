@@ -21,6 +21,11 @@ const routes = [
         subtitle: 'Update your profile information.',
     },
     {
+        href: ROUTES.DASHBOARD.SETTINGS.PASSWORD,
+        title: 'Password',
+        subtitle: 'Change your password.',
+    },
+    {
         href: ROUTES.DASHBOARD.SETTINGS.ACCOUNT,
         title: 'Account',
         subtitle: 'Update your account settings.',

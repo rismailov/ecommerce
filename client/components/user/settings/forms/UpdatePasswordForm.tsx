@@ -10,48 +10,42 @@ import {
     FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { RQ_AUTH_USER_KEY } from '@/constants'
 import { useAuth } from '@/hooks/use-auth'
 import axios from '@/lib/axios'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useEffect } from 'react'
+import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
-import { ProfileFormSkeleton } from '../skeletons/ProfileFormSkeleton'
+import { FormSkeleton } from '../FormSkeleton'
 
-const schema = z.object({
-    first_name: z
-        .string()
-        .min(2, 'First name must have at least 2 characters.'),
-    last_name: z.string().min(2, 'Last name must have at least 2 characters.'),
-    email: z.string().email('Invalid e-mail address'),
-})
+const schema = z
+    .object({
+        current_password: z.string(),
+        new_password: z
+            .string()
+            .min(8, 'Password must have at least 8 characters'),
+        new_password_confirmation: z.string(),
+    })
+    // make sure password confirmation matches password
+    .refine((data) => data.new_password === data.new_password_confirmation, {
+        message: "New password doesn't match confirmation.",
+        path: ['new_password_confirmation'],
+    })
 
-export const ProfileForm = () => {
-    const queryClient = useQueryClient()
-
+export const UpdatePasswordForm = () => {
     const { user } = useAuth({ middleware: 'dashboard' })
 
     const form = useForm({
         defaultValues: {
-            first_name: user?.first_name ?? '',
-            last_name: user?.last_name ?? '',
-            email: user?.email ?? '',
+            current_password: '',
+            new_password: '',
+            new_password_confirmation: '',
         },
     })
 
-    // update form inputs with fresh data after successful request
-    const { reset } = form
-    useEffect(() => {
-        if (user) {
-            reset(user)
-        }
-    }, [user, reset])
-
     const { mutateAsync } = useMutation({
         mutationFn: (data: z.infer<typeof schema>) =>
-            axios.patch('/settings/profile', data),
+            axios.patch('/settings/password', data),
         meta: { setError: form.setError },
     })
 
@@ -59,18 +53,16 @@ export const ProfileForm = () => {
         try {
             await mutateAsync(data)
 
-            await queryClient.invalidateQueries({
-                queryKey: [RQ_AUTH_USER_KEY],
-            })
+            form.reset()
 
-            toast('Profile information updated.')
+            toast('Password successfully changed.')
         } catch (_) {
             //
         }
     }
 
     if (!user) {
-        return <ProfileFormSkeleton />
+        return <FormSkeleton />
     }
 
     return (
@@ -82,48 +74,58 @@ export const ProfileForm = () => {
             >
                 <FormField
                     control={form.control}
-                    name="first_name"
+                    name="current_password"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>First name</FormLabel>
-
-                            <FormControl>
-                                <Input required placeholder="John" {...field} />
-                            </FormControl>
-
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                <FormField
-                    control={form.control}
-                    name="last_name"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Last name</FormLabel>
-
-                            <FormControl>
-                                <Input required placeholder="Doe" {...field} />
-                            </FormControl>
-
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>E-mail</FormLabel>
+                            <FormLabel>Password</FormLabel>
 
                             <FormControl>
                                 <Input
-                                    type="email"
                                     required
-                                    placeholder="johndoe@gmail.com"
+                                    type="password"
+                                    placeholder="********"
+                                    {...field}
+                                />
+                            </FormControl>
+
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <FormField
+                    control={form.control}
+                    name="new_password"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>New password</FormLabel>
+
+                            <FormControl>
+                                <Input
+                                    required
+                                    type="password"
+                                    placeholder="********"
+                                    {...field}
+                                />
+                            </FormControl>
+
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <FormField
+                    control={form.control}
+                    name="new_password_confirmation"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Confirm new password</FormLabel>
+
+                            <FormControl>
+                                <Input
+                                    type="password"
+                                    required
+                                    placeholder="********"
                                     {...field}
                                 />
                             </FormControl>
