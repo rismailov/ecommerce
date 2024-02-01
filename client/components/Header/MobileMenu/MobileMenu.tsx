@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { useRoutes } from '@/hooks/use-routes'
+import { ROUTES } from '@/lib/routes'
 import { IconX } from '@tabler/icons-react'
 import { MobileMenuItem } from './MobileMenuItem'
 
@@ -10,8 +10,6 @@ export const MobileMenu = ({
     isOpen: boolean
     close: () => void
 }) => {
-    const routes = useRoutes()
-
     return (
         <aside
             className="md:hidden z-30 fixed top-0 bottom-0 right-0 w-[300px] h-screen flex flex-col bg-background border-l will-change-transform transition-transform duration-300"
@@ -34,15 +32,13 @@ export const MobileMenu = ({
             {/* body */}
             <div className="flex-1 py-4 px-6 flex flex-col">
                 <nav className="flex flex-col">
-                    {routes.map(({ label, isActive, href }) => (
-                        <MobileMenuItem
-                            key={href}
-                            href={href}
-                            isActive={isActive}
-                        >
-                            {label}
-                        </MobileMenuItem>
-                    ))}
+                    <MobileMenuItem href={ROUTES.SHOP.MEN}>men</MobileMenuItem>
+                    <MobileMenuItem href={ROUTES.SHOP.WOMEN}>
+                        women
+                    </MobileMenuItem>
+                    <MobileMenuItem href={ROUTES.SHOP.KIDS}>
+                        kids
+                    </MobileMenuItem>
                 </nav>
             </div>
 

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\User\Settings;
 
 use App\Traits\UserValidationTrait;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class RegisterRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
     use UserValidationTrait;
 
@@ -21,8 +22,7 @@ class RegisterRequest extends FormRequest
         return [
             'first_name' => $rules['first_name'],
             'last_name' => $rules['last_name'],
-            'password' => [...$rules['password'], 'confirmed'],
-            'email' => [...$rules['email'], 'unique:users'],
+            'email' => [...$rules['email'], Rule::unique('users')->ignoreModel($this->user())],
         ];
     }
 }

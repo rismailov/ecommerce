@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Casts\NameCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -42,18 +42,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'first_name' => NameCast::class,
+        'last_name' => NameCast::class,
     ];
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(
-            function ($user) {
-                // Fix casing when saving user's first and last name
-                $user->first_name = str()->title($user->first_name);
-                $user->last_name = str()->title($user->last_name);
-            }
-        );
-    }
 }

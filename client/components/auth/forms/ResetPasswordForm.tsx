@@ -12,7 +12,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { useAuth } from '@/hooks/use-auth'
 import { ROUTES } from '@/lib/routes'
-import { useAppStore } from '@/store/app.store'
+import { useAuthStore } from '@/store/auth.store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
@@ -33,7 +33,7 @@ export const ResetPasswordForm = () => {
 
     const { resetPassword } = useAuth({
         middleware: 'guest',
-        redirectIfAuthenticated: '/dashboard',
+        redirectIfAuthenticated: ROUTES.DASHBOARD.SETTINGS.PROFILE,
     })
 
     // initial e-mail and token taken from query string
@@ -86,7 +86,7 @@ export const ResetPasswordForm = () => {
         meta: { setError: form.setError },
     })
 
-    const setStatus = useAppStore((s) => s.setStatus)
+    const setStatus = useAuthStore((s) => s.setStatus)
     const onSubmit = async (data: TFormData) => {
         // as there's no token input field, set error as a status
         if (!token) {

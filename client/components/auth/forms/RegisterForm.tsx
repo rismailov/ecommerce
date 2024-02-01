@@ -10,13 +10,13 @@ import {
     FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { useAuth } from '@/hooks/use-auth'
+import { ROUTES } from '@/lib/routes'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { useAuth } from '@/hooks/use-auth'
-import { ROUTES } from '@/lib/routes'
-import { useMutation } from '@tanstack/react-query'
 
 const schema = z
     .object({
@@ -39,7 +39,7 @@ const schema = z
 export const RegisterForm = () => {
     const { register, invalidate } = useAuth({
         middleware: 'guest',
-        redirectIfAuthenticated: ROUTES.DASHBOARD.INDEX,
+        redirectIfAuthenticated: ROUTES.DASHBOARD.SETTINGS.PROFILE,
     })
 
     const form = useForm<z.infer<typeof schema>>({

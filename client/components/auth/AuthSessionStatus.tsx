@@ -1,6 +1,6 @@
 'use client'
 
-import { TAlertType, useAppStore } from '@/store/app.store'
+import { TAlertType, useAuthStore } from '@/store/auth.store'
 import { useSearchParams } from 'next/navigation'
 import { Dispatch, SetStateAction, useEffect } from 'react'
 import { Alert, AlertDescription } from '../ui/alert'
@@ -20,9 +20,11 @@ export const AuthSessionStatus = ({
 }) => {
     const searchParams = useSearchParams()
 
-    const type = useAppStore((s) => s.type)
-    const status = useAppStore((s) => s.status)
-    const setStatus = useAppStore((s) => s.setStatus)
+    const { type, status, setStatus } = useAuthStore((s) => ({
+        type: s.type,
+        status: s.status,
+        setStatus: s.setStatus,
+    }))
 
     useEffect(() => {
         // A little explanation:

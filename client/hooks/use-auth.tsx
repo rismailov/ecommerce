@@ -1,5 +1,6 @@
 'use client'
 
+import { RQ_AUTH_USER_KEY } from '@/constants'
 import axios from '@/lib/axios'
 import { ROUTES } from '@/lib/routes'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
@@ -18,7 +19,7 @@ export const useAuth = ({
     middleware,
     redirectIfAuthenticated,
 }: {
-    middleware?: string
+    middleware?: 'dashboard' | 'guest'
     redirectIfAuthenticated?: string
 }) => {
     const router = useRouter()
@@ -26,18 +27,9 @@ export const useAuth = ({
     const queryClient = useQueryClient()
 
     const { data: user, error } = useQuery({
-        queryKey: ['authUser'],
+        queryKey: [RQ_AUTH_USER_KEY],
         queryFn: (): Promise<UserEntity> =>
-            axios
-                .get('/user')
-                .then((res) => res.data)
-                .catch((error) => {
-                    if (error.response?.status === 409) {
-                        router.push('/verify-email')
-                    }
-
-                    return null
-                }),
+            axios.get('/user').then((res) => res.data),
     })
 
     /**
@@ -46,7 +38,7 @@ export const useAuth = ({
      * to invalidate queries, because request itself must be returned for mutations to work.
      */
     const invalidate = () =>
-        queryClient.invalidateQueries({ queryKey: ['authUser'] })
+        queryClient.invalidateQueries({ queryKey: [RQ_AUTH_USER_KEY] })
 
     /**
      * Local Requests.
@@ -92,7 +84,7 @@ export const useAuth = ({
         // invalidateQuery() will refetch the user but won't reset the user back to "null"
         // in case of error (401) and components won't rerender because of that.
         // that's why we're explicitly resetting query here
-        await queryClient.resetQueries({ queryKey: ['authUser'] })
+        await queryClient.resetQueries({ queryKey: [RQ_AUTH_USER_KEY] })
 
         router.push(ROUTES.AUTH.LOGIN)
     }
@@ -102,15 +94,9 @@ export const useAuth = ({
             router.push(redirectIfAuthenticated)
         }
 
-        if (
-            window.location.pathname === '/verify-email' &&
-            user?.email_verified_at &&
-            redirectIfAuthenticated
-        ) {
-            router.push(redirectIfAuthenticated)
+        if (middleware === 'dashboard' && error) {
+            router.push(ROUTES.AUTH.LOGIN)
         }
-
-        if (middleware === 'auth' && error) logout()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user, error, middleware, redirectIfAuthenticated])
 

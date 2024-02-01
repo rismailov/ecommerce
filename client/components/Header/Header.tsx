@@ -1,73 +1,50 @@
 'use client'
 
-import { useAuth } from '@/hooks/use-auth'
-import { useRoutes } from '@/hooks/use-routes'
 import { ROUTES } from '@/lib/routes'
-import { cn } from '@/lib/utils'
 import { IconMenu2 } from '@tabler/icons-react'
-import Link from 'next/link'
 import { useState } from 'react'
 import { Button } from '../ui/button'
 import { AuthDropdown } from './AuthDropdown'
 import { MobileMenu } from './MobileMenu'
+import { NavItem } from './NavItem'
 import { ThemeSwitcher } from './ThemeSwitcher'
+import Link from 'next/link'
 
 export const Header = () => {
-    const routes = useRoutes()
-    const { user } = useAuth({})
-
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
         <>
-            <header className="fixed h-[70px] top-0 left-0 right-0 z-20 bg-background/80 backdrop-blur-sm border-b">
+            <header className="h-[60px] border-b">
                 <div className="container">
                     <div className="h-full flex items-center justify-between">
                         {/* left side */}
-                        <div className="flex items-center">
-                            <nav className="hidden sm:flex items-center space-x-5">
-                                {routes.map(({ label, isActive, href }) => (
-                                    <Button
-                                        key={href}
-                                        asChild
-                                        variant="link"
-                                        className={cn(
-                                            'text-base hover:no-underline',
-                                            isActive
-                                                ? 'text-foreground'
-                                                : 'text-muted-foreground hover:text-foreground',
-                                        )}
-                                    >
-                                        <Link href={href}>{label}</Link>
-                                    </Button>
-                                ))}
-                            </nav>
+                        <div className="w-1/2 sm:w-1/4 flex items-center">
+                            <Link href={ROUTES.APP.INDEX}>Logo</Link>
                         </div>
 
+                        {/* center */}
+                        <nav className="w-1/2 hidden sm:flex items-center justify-center space-x-5">
+                            <NavItem href={ROUTES.SHOP.MEN}>men</NavItem>
+                            <NavItem href={ROUTES.SHOP.WOMEN}>women</NavItem>
+                            <NavItem href={ROUTES.SHOP.KIDS}>kids</NavItem>
+                        </nav>
+
                         {/* right side */}
-                        <div className="flex items-center space-x-4">
+                        <div className="w-1/2 sm:w-1/4 flex items-center justify-end space-x-2">
                             <ThemeSwitcher />
 
                             <Button
                                 onClick={() => setMobileMenuOpen(true)}
                                 size="icon"
-                                variant="secondary"
+                                variant="ghost"
                                 className="sm:hidden"
                                 aria-label="Open mobile menu"
                             >
-                                <IconMenu2 className="w-6 h-6 stroke-foreground" />
+                                <IconMenu2 className="w-[1.4rem] h-[1.4rem] stroke-foreground" />
                             </Button>
 
-                            {/* auth */}
-                            {user ? (
-                                <AuthDropdown />
-                            ) : (
-                                <Button asChild className="hidden sm:flex">
-                                    <Link href={ROUTES.AUTH.LOGIN}>
-                                        Sign In
-                                    </Link>
-                                </Button>
-                            )}
+                            <AuthDropdown />
                         </div>
                     </div>
                 </div>

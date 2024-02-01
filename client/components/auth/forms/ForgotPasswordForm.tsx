@@ -11,7 +11,8 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useAuth } from '@/hooks/use-auth'
-import { useAppStore } from '@/store/app.store'
+import { ROUTES } from '@/lib/routes'
+import { useAuthStore } from '@/store/auth.store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import { useEffect } from 'react'
@@ -21,7 +22,7 @@ import { z } from 'zod'
 export const ForgotPasswordForm = () => {
     const { forgotPassword, invalidate } = useAuth({
         middleware: 'guest',
-        redirectIfAuthenticated: '/dashboard',
+        redirectIfAuthenticated: ROUTES.DASHBOARD.SETTINGS.PROFILE,
     })
 
     const schema = z.object({
@@ -46,7 +47,7 @@ export const ForgotPasswordForm = () => {
         meta: { setError: form.setError },
     })
 
-    const setStatus = useAppStore((s) => s.setStatus)
+    const setStatus = useAuthStore((s) => s.setStatus)
     const onSubmit = async (data: z.infer<typeof schema>) => {
         try {
             const response = await mutateAsync(data)

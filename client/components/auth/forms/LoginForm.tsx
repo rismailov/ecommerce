@@ -13,7 +13,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { useAuth } from '@/hooks/use-auth'
 import { ROUTES } from '@/lib/routes'
-import { useAppStore } from '@/store/app.store'
+import { useAuthStore } from '@/store/auth.store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
@@ -30,7 +30,7 @@ const schema = z.object({
 export const LoginForm = () => {
     const { login, invalidate } = useAuth({
         middleware: 'guest',
-        redirectIfAuthenticated: '/dashboard',
+        redirectIfAuthenticated: ROUTES.DASHBOARD.SETTINGS.PROFILE,
     })
 
     const form = useForm<z.infer<typeof schema>>({
@@ -55,7 +55,7 @@ export const LoginForm = () => {
         meta: { setError: form.setError },
     })
 
-    const setStatus = useAppStore((s) => s.setStatus)
+    const setStatus = useAuthStore((s) => s.setStatus)
     const onSubmit = async (data: z.infer<typeof schema>) => {
         try {
             await mutateAsync(data)

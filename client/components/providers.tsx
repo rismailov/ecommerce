@@ -44,6 +44,7 @@ const queryClient = new QueryClient({
                 }
             }
 
+            // show toast for unhandled server errors
             if (
                 isAxiosError(error) &&
                 error.response?.status &&
@@ -58,11 +59,11 @@ const queryClient = new QueryClient({
 export const Providers = ({ children }: PropsWithChildren) => {
     return (
         <QueryClientProvider client={queryClient}>
-            <div className="relative min-h-screen flex flex-col justify-between">
-                <Header />
+            <Header />
 
-                <main className="flex-1">{children}</main>
-            </div>
+            <main className="flex-1 pt-5">
+                <div className="container">{children}</div>
+            </main>
         </QueryClientProvider>
     )
 }
