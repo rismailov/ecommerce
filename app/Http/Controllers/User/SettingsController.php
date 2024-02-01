@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Settings\UpdatePasswordRequest;
 use App\Http\Requests\User\Settings\UpdateProfileRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SettingsController extends Controller
 {
@@ -20,6 +22,18 @@ class SettingsController extends Controller
         $request->user()->update([
             'password' => $request->validated('new_password'),
         ]);
+
+        return response()->noContent();
+    }
+
+    public function deleteAccount(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        $request->user()->delete();
 
         return response()->noContent();
     }
