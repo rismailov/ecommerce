@@ -9,6 +9,7 @@ import { MobileMenu } from './MobileMenu'
 import { NavItem } from './NavItem'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import Link from 'next/link'
+import { CartTrigger } from './CartTrigger'
 
 export const Header = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -45,6 +46,8 @@ export const Header = () => {
                             </Button>
 
                             <AuthDropdown />
+
+                            <CartTrigger />
                         </div>
                     </div>
                 </div>

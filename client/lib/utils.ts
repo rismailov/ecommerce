@@ -15,3 +15,7 @@ export function getNameInitialsForAvatar(fullName: string): string {
         .map((name) => name[0])
         .join('')
 }
+
+export function sleep(ms = 500): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms))
+}

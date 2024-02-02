@@ -77,7 +77,7 @@ export const AuthDropdown = () => {
 
                 <Separator className="mb-1" />
 
-                <DropdownMenuItem asChild>
+                <DropdownMenuItem asChild className="hover:bg-[#1d202a]">
                     <Link
                         href={
                             user
