@@ -61,7 +61,7 @@ export const Providers = ({ children }: PropsWithChildren) => {
         <QueryClientProvider client={queryClient}>
             <Header />
 
-            <main className="flex-1 pt-5">
+            <main className="flex-1 pt-2">
                 <div className="container">{children}</div>
             </main>
         </QueryClientProvider>

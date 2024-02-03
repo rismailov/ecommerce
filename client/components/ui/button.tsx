@@ -1,6 +1,6 @@
-import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
+import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 import { IconLoader2 } from '@tabler/icons-react'
@@ -16,10 +16,9 @@ const buttonVariants = cva(
                     'bg-destructive text-destructive-foreground hover:bg-destructive/90',
                 outline:
                     'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
-                secondary:
-                    'bg-accent hover:bg-accent/80 dark:bg-primary/10 dark:text-primary dark:hover:bg-primary/20',
+                secondary: 'bg-secondary hover:bg-secondary/90',
                 ghost: 'hover:bg-accent hover:text-accent-foreground',
-                link: 'text-primary underline-offset-4 hover:underline !p-0 !h-auto',
+                link: 'text-brand-foreground underline-offset-4 hover:underline !p-0 !h-auto font-[450] transition-none',
             },
             size: {
                 default: 'h-9 px-4 py-2',

@@ -10,29 +10,34 @@ import { NavItem } from './NavItem'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import Link from 'next/link'
 import { CartTrigger } from './CartTrigger'
+import { Logo } from '../common/Logo'
 
 export const Header = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
         <>
-            <header className="h-[60px] border-b">
+            <header className="h-[80px]">
                 <div className="container">
                     <div className="h-full flex items-center justify-between">
                         {/* left side */}
-                        <div className="w-1/2 sm:w-1/4 flex items-center">
-                            <Link href={ROUTES.APP.INDEX}>Logo</Link>
+                        <div className="flex items-center space-x-10">
+                            <Link href={ROUTES.APP.INDEX}>
+                                <Logo />
+                            </Link>
+
+                            <nav className="hidden sm:flex items-center justify-center space-x-4">
+                                <NavItem href={ROUTES.SHOP.INDEX}>All</NavItem>
+                                <NavItem href={ROUTES.SHOP.MEN}>Men</NavItem>
+                                <NavItem href={ROUTES.SHOP.WOMEN}>
+                                    Women
+                                </NavItem>
+                                <NavItem href={ROUTES.SHOP.KIDS}>Kids</NavItem>
+                            </nav>
                         </div>
 
-                        {/* center */}
-                        <nav className="w-1/2 hidden sm:flex items-center justify-center space-x-5">
-                            <NavItem href={ROUTES.SHOP.MEN}>men</NavItem>
-                            <NavItem href={ROUTES.SHOP.WOMEN}>women</NavItem>
-                            <NavItem href={ROUTES.SHOP.KIDS}>kids</NavItem>
-                        </nav>
-
                         {/* right side */}
-                        <div className="w-1/2 sm:w-1/4 flex items-center justify-end space-x-2">
+                        <div className="flex items-center justify-end space-x-2">
                             <ThemeSwitcher />
 
                             <Button

@@ -140,7 +140,7 @@ export const LoginForm = () => {
                     <Button
                         variant="link"
                         asChild
-                        className="text-brand no-underline hover:underline"
+                        className="text-primary-text no-underline hover:underline"
                     >
                         <Link href={ROUTES.AUTH.FORGOT_PASSWORD}>
                             Forgot password?

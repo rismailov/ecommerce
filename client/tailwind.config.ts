@@ -30,20 +30,19 @@ const config = {
                 primary: {
                     DEFAULT: 'hsl(var(--primary))',
                     foreground: 'hsl(var(--primary-foreground))',
+                    light: 'hsl(var(--primary-light))',
+                    text: 'hsl(var(--primary-text))',
                 },
                 secondary: {
                     DEFAULT: 'hsl(var(--secondary))',
-                    hover: 'hsl(var(--secondary-hover))',
                     foreground: 'hsl(var(--secondary-foreground))',
                 },
                 destructive: {
                     DEFAULT: 'hsl(var(--destructive))',
                     foreground: 'hsl(var(--destructive-foreground))',
+                    text: 'hsl(var(--destructive-text))',
                 },
-                success: {
-                    DEFAULT: 'hsl(var(--success))',
-                    foreground: 'hsl(var(--success-foreground))',
-                },
+                success: 'hsl(var(--success))',
                 muted: {
                     DEFAULT: 'hsl(var(--muted))',
                     foreground: 'hsl(var(--muted-foreground))',

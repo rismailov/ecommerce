@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/sheet'
 import { sleep } from '@/lib/utils'
 import useCartStore from '@/store/cart.store'
-import { IconBox } from '@tabler/icons-react'
+import { IconBox, IconShoppingCart } from '@tabler/icons-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { CartItem } from './CartItem'
@@ -63,14 +63,25 @@ export const Cart = () => {
                     </SheetTitle>
                 </SheetHeader>
 
-                <div className="flex-1 h-full overflow-y-auto">
-                    <ScrollArea className="h-full">
-                        <AnimatePresence mode="popLayout">
-                            {!items.length ? (
-                                <p className="mt-2 font-medium text-muted-foreground">
-                                    Your cart is empty.
+                <div className="flex-1 overflow-y-auto">
+                    <AnimatePresence mode="popLayout">
+                        {!items.length ? (
+                            <div className="h-full flex flex-col items-center justify-center pb-8">
+                                <p className="mb-4 text-muted-foreground text-center">
+                                    Nothing here.
+                                    <br />
+                                    Visit store to add some products.
                                 </p>
-                            ) : (
+
+                                <div className="w-20 h-20 border border-dashed flex items-center justify-center rounded-full">
+                                    <IconShoppingCart
+                                        className="w-8 h-8 text-muted-foreground"
+                                        strokeWidth={1.5}
+                                    />
+                                </div>
+                            </div>
+                        ) : (
+                            <ScrollArea className="h-full">
                                 <div className="flex flex-col space-y-5">
                                     {items.map((item, idx) => (
                                         <motion.div
@@ -103,9 +114,9 @@ export const Cart = () => {
                                         </motion.div>
                                     ))}
                                 </div>
-                            )}
-                        </AnimatePresence>
-                    </ScrollArea>
+                            </ScrollArea>
+                        )}
+                    </AnimatePresence>
                 </div>
 
                 <SheetFooter>

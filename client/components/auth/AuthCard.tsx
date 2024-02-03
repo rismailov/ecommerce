@@ -50,7 +50,7 @@ export const AuthCard = ({
                     <Button
                         variant="link"
                         asChild
-                        className="text-base font-medium no-underline hover:underline text-brand"
+                        className="text-base text-primary-text font-medium no-underline hover:underline"
                     >
                         <Link
                             href={

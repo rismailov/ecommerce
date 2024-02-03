@@ -7,7 +7,7 @@ export const NavItem = ({ href, children }: PropsWithChildren<LinkProps>) => {
         <Button
             asChild
             variant="link"
-            className="hover:no-underline uppercase text-foregorund text-[0.925rem]"
+            className="text-base text-muted-foreground hover:text-foreground"
         >
             <Link href={href}>{children}</Link>
         </Button>

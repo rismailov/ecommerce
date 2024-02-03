@@ -99,7 +99,7 @@ export const AuthDropdown = () => {
                         <DropdownMenuItem asChild>
                             <button
                                 onClick={logout}
-                                className="w-full flex items-center justify-between text-destructive focus:text-destructive focus:bg-destructive/5"
+                                className="w-full flex items-center justify-between"
                             >
                                 <span>Logout</span>
 

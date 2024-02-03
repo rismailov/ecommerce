@@ -56,7 +56,7 @@ export default function ProfileLayout({ children }: PropsWithChildren) {
                                 className={cn([
                                     'justify-start',
                                     url === href
-                                        ? 'bg-accent hover:bg-accent'
+                                        ? '!bg-primary-light !text-primary-text'
                                         : 'hover:bg-transparent hover:underline',
                                 ])}
                             >
