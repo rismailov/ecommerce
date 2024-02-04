@@ -45,4 +45,9 @@ class User extends Authenticatable
         'first_name' => NameCast::class,
         'last_name' => NameCast::class,
     ];
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
