@@ -37,17 +37,17 @@ export const Header = () => {
                         </div>
 
                         {/* right side */}
-                        <div className="flex items-center justify-end space-x-2">
+                        <div className="flex items-center justify-end space-x-3">
                             <ThemeSwitcher />
 
                             <Button
                                 onClick={() => setMobileMenuOpen(true)}
                                 size="icon"
-                                variant="ghost"
+                                variant="outline"
                                 className="sm:hidden"
                                 aria-label="Open mobile menu"
                             >
-                                <IconMenu2 className="w-[1.4rem] h-[1.4rem] stroke-foreground" />
+                                <IconMenu2 className="w-5 h-5 stroke-foreground" />
                             </Button>
 
                             <AuthDropdown />

@@ -11,9 +11,9 @@ export const ThemeSwitcher = () => {
     return (
         <Button
             size="icon"
-            variant="ghost"
+            variant="outline"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="[&>svg]:w-5 [&>svg]:h-5 [&>svg]:stroke-foreground"
+            className="[&>svg]:w-4.5 [&>svg]:h-4.5 [&>svg]:stroke-foreground"
             aria-label="Toggle theme"
         >
             {!isMounted && (

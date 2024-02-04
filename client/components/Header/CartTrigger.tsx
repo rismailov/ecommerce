@@ -9,11 +9,11 @@ export const CartTrigger = () => {
     return (
         <Button
             size="icon"
-            variant="ghost"
+            variant="outline"
             onClick={toggleCart}
             className="relative"
         >
-            <IconShoppingCart className="w-5 h-5" />
+            <IconShoppingCart className="w-4.5 h-4.5" />
 
             {!!items.length && (
                 <div className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-medium text-primary-foreground bg-primary rounded-full -top-[3px] -right-[3px]">
