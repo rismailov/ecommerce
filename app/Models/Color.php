@@ -6,16 +6,14 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Colour extends Model
+class Color extends Model
 {
     use HasFactory;
 
     protected $fillable = ['value', 'hex_code'];
 
     /**
-     * Convert colour value to snake case (with hyphen delimiter).
-     *
-     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     * Convert color value to snake case (with hyphen delimiter).
      */
     protected function value(): Attribute
     {

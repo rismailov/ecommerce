@@ -14,7 +14,7 @@ class Product extends Model
 
     protected $fillable = [
         'nanoid',
-        'gender',
+        'collection',
         'name',
         'slug',
         'price',
@@ -62,23 +62,23 @@ class Product extends Model
     }
 
     /**
-     * Get human readable colour name.
+     * Get human readable color name.
      */
-    protected function colourOptions(): Attribute
+    protected function colorOptions(): Attribute
     {
         return Attribute::make(
-            get: fn () => array_map(fn ($colour) => [
-                'value' => (string) $colour->id,
-                'label' => __('models.colours.values.'.$colour->value),
-                'hex' => $colour->hex_code,
-            ], $this->colours)
+            get: fn () => array_map(fn ($color) => [
+                'value' => (string) $color->id,
+                'label' => __('models.colors.values.'.$color->value),
+                'hex' => $color->hex_code,
+            ], $this->colors)
         );
     }
 
     // Relations
-    public function colours()
+    public function colors()
     {
-        return $this->belongsToMany(Colour::class);
+        return $this->belongsToMany(Color::class);
     }
 
     public function sizes()

@@ -50,7 +50,9 @@ export const CartItem = ({
                         <h3>${cartItem.price}</h3>
                     </div>
 
-                    <p className="text-muted-foreground">{cartItem.gender}</p>
+                    <p className="text-muted-foreground">
+                        {cartItem.collection}
+                    </p>
                     <p className="text-muted-foreground">{`Size - ${cartItem.size.label}`}</p>
                 </div>
 

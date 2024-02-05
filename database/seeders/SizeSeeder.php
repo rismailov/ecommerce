@@ -14,17 +14,17 @@ class SizeSeeder extends Seeder
      */
     public function run()
     {
-        $genders = [
-            'kids'  => [27, 28, 29, 30, 31, 32, 33, 34],
+        $collections = [
+            'kids' => [27, 28, 29, 30, 31, 32, 33, 34],
             'women' => [35, 36, 37, 38, 39],
-            'men'   => [40, 41, 42, 43, 44, 45, 46],
+            'men' => [40, 41, 42, 43, 44, 45, 46],
         ];
 
-        foreach ($genders as $gender => $sizes) {
+        foreach ($collections as $collection => $sizes) {
             foreach ($sizes as $size) {
                 Size::create([
-                    'value'  => $size,
-                    'gender' => $gender,
+                    'value' => $size,
+                    'collection' => $collection,
                 ]);
             }
         }

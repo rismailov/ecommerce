@@ -12,7 +12,7 @@ export const ShopHeader = ({
     setShowFilters: Dispatch<SetStateAction<boolean>>
 }) => {
     return (
-        <section className="w-full sticky top-[-1px] z-10 bg-background flex items-center justify-end space-x-5 h-[40px]">
+        <section className="w-full sticky top-[-1px] h-[40px] z-10 bg-background flex items-center justify-end space-x-5">
             <p className="text-muted-foreground">
                 {`${totalProducts} ${
                     totalProducts === 1 ? 'result' : 'results'

@@ -2,45 +2,45 @@
 <?php
 
 return [
-    'colours' => [
-        'single'   => 'Цвет',
+    'colors' => [
+        'single' => 'Цвет',
         'multiple' => 'Цвета',
 
         'values' => [
-            'black'  => 'Черный',
+            'black' => 'Черный',
             'orange' => 'Оранжевый',
-            'blue'   => 'Голубой',
-            'brown'  => 'Коричневый',
-            'green'  => 'Зелёный',
-            'grey'   => 'Серый',
-            'pink'   => 'Розовый',
+            'blue' => 'Голубой',
+            'brown' => 'Коричневый',
+            'green' => 'Зелёный',
+            'grey' => 'Серый',
+            'pink' => 'Розовый',
             'purple' => 'Фиолетовый',
-            'red'    => 'Красный',
-            'white'  => 'Белый',
+            'red' => 'Красный',
+            'white' => 'Белый',
             'yellow' => 'Жёлтый',
         ],
     ],
 
-    'genders' => [
-        'men'   => 'Мужская',
+    'collections' => [
+        'men' => 'Мужская',
         'women' => 'Женская',
-        'kids'  => 'Детская',
+        'kids' => 'Детская',
 
-        'product_subtitle' => ':Gender Обувь',
+        'product_subtitle' => ':Collection Обувь',
     ],
 
     'images' => [
-        'single'   => 'Картинка',
+        'single' => 'Картинка',
         'multiple' => 'Картинки',
     ],
 
     'products' => [
-        'single'   => 'Товар',
+        'single' => 'Товар',
         'multiple' => 'Товары',
     ],
 
     'reviews' => [
-        'single'   => 'Отзыв',
+        'single' => 'Отзыв',
         'multiple' => 'Отзывы',
     ],
 

@@ -2,7 +2,6 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { motion } from 'framer-motion'
 import { useWindowScroll } from 'react-use'
 import { FiltersBase } from './FiltersBase'
-import { TFilterOptions } from './types'
 
 const variants = {
     initial: {
@@ -18,8 +17,7 @@ const variants = {
     exit: { opacity: 0 },
 }
 
-export const DesktopFilters = ({ options }: { options: TFilterOptions }) => {
-    // track scroll position to dynamically change the Filters section height
+export const DesktopFilters = () => {
     const { y } = useWindowScroll()
 
     return (
@@ -29,14 +27,15 @@ export const DesktopFilters = ({ options }: { options: TFilterOptions }) => {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="hidden lg:block sticky overflow-y-auto top-[60px] w-1/5 mr-10"
+            className="hidden lg:block sticky overflow-y-auto w-1/5 mr-10 h-screen top-24"
             transition={{ duration: 0 }} // set duration 0 so height change below won't be animated
             style={{
-                height: `calc(100vh - ${y && y > 60 ? 70 : 130}px)`,
+                height: 'calc(100vh - 35px)',
+                top: y > 80 ? 20 : 100 - y,
             }}
         >
             <ScrollArea className="w-full h-full pr-8" type="always">
-                <FiltersBase options={options} />
+                <FiltersBase />
             </ScrollArea>
         </motion.aside>
     )

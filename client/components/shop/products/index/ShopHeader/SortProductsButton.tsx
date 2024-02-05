@@ -6,7 +6,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import useFiltersStore from '@/store/filters.store'
 import { IconArrowsDownUp } from '@tabler/icons-react'
-import { SORT_OPTIONS } from '../constants'
+import { SORT_OPTIONS } from '../../../constants'
 
 export const SortProductsButton = () => {
     const sort = useFiltersStore((s) => s.sort)

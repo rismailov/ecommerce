@@ -8,7 +8,7 @@ export type TCartItem = {
     size: { value: string; label: number }
     price: string
     amount: number
-    gender: string
+    collection: string
 }
 
 type CartStore = {

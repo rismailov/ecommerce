@@ -1,4 +1,4 @@
-import Axios from 'axios'
+import Axios, { AxiosResponse } from 'axios'
 
 const axios = Axios.create({
     withXSRFToken: true,
@@ -9,5 +9,9 @@ const axios = Axios.create({
         Accept: 'application/json',
     },
 })
+
+axios.interceptors.response.use(
+    async (response: AxiosResponse) => response.data,
+)
 
 export default axios

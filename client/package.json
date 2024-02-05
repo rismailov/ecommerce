@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "next dev --port 3750",
         "build": "next build",
-        "start": "next start",
+        "start": "next start --port 3750",
         "lint": "next lint",
         "format": "pretty-quick --staged",
         "prepare": "cd .. && husky client/.husky"

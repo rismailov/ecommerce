@@ -4,20 +4,20 @@ import { shallow } from 'zustand/shallow'
 import { createWithEqualityFn } from 'zustand/traditional'
 
 type TPriceProductFilter = {
-    min: number | string | null
-    max: number | string | null
+    min: number | string
+    max: number | string
     onSale: boolean
 }
 
 type FiltersStore = {
     collections: string[]
-    setCollections: (genders: string[]) => void
+    setCollections: (collections: string[]) => void
 
     sizes: string[]
     setSizes: (sizes: string[]) => void
 
-    colours: string[]
-    setColours: (colours: string[]) => void
+    colors: string[]
+    setColors: (colors: string[]) => void
 
     price: TPriceProductFilter
     setPrice: (price: TPriceProductFilter) => void
@@ -32,15 +32,15 @@ type FiltersStore = {
 const useFiltersStore = createWithEqualityFn<FiltersStore>(
     (set) => ({
         collections: [],
-        setCollections: (genders) => set({ collections: genders }),
+        setCollections: (collections) => set({ collections: collections }),
 
         sizes: [],
         setSizes: (sizes) => set({ sizes }),
 
-        colours: [],
-        setColours: (colours) => set({ colours }),
+        colors: [],
+        setColors: (colors) => set({ colors }),
 
-        price: { min: null, max: null, onSale: false },
+        price: { min: '', max: '', onSale: false },
         setPrice: (price) => set({ price }),
 
         sort: 'date-desc',

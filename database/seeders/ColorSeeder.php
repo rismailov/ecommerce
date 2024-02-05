@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Enums\ColourEnum;
-use App\Models\Colour;
+use App\Models\Color;
 use Illuminate\Database\Seeder;
 
-class ColourSeeder extends Seeder
+class ColorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +14,7 @@ class ColourSeeder extends Seeder
      */
     public function run()
     {
-        $colours = [
+        $colors = [
             ['value' => 'black', 'hex_code' => '#000000'],
             ['value' => 'orange', 'hex_code' => '#F26B26'],
             ['value' => 'blue', 'hex_code' => '#1590C8'],
@@ -29,8 +28,8 @@ class ColourSeeder extends Seeder
             ['value' => 'yellow', 'hex_code' => '#FDD533'],
         ];
 
-        foreach ($colours as $colour) {
-            Colour::create($colour);
+        foreach ($colors as $color) {
+            Color::create($color);
         }
     }
 }

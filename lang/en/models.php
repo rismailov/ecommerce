@@ -1,45 +1,45 @@
 <?php
 
 return [
-    'colours' => [
-        'single'   => 'Colour',
-        'multiple' => 'Colours',
+    'colors' => [
+        'single' => 'Color',
+        'multiple' => 'Colors',
 
         'values' => [
-            'black'  => 'Black',
+            'black' => 'Black',
             'orange' => 'Orange',
-            'blue'   => 'Blue',
-            'brown'  => 'Brown',
-            'green'  => 'Green',
-            'grey'   => 'Grey',
-            'pink'   => 'Pink',
+            'blue' => 'Blue',
+            'brown' => 'Brown',
+            'green' => 'Green',
+            'grey' => 'Grey',
+            'pink' => 'Pink',
             'purple' => 'Purple',
-            'red'    => 'Red',
-            'white'  => 'White',
+            'red' => 'Red',
+            'white' => 'White',
             'yellow' => 'Yellow',
         ],
     ],
 
-    'genders' => [
-        'men'   => 'Men',
+    'collections' => [
+        'men' => 'Men',
         'women' => 'Women',
-        'kids'  => 'Kids',
+        'kids' => 'Kids',
 
-        'product_subtitle' => ":Gender's Shoes",
+        'product_subtitle' => ":Collection's Shoes",
     ],
 
     'images' => [
-        'single'   => 'Image',
+        'single' => 'Image',
         'multiple' => 'Images',
     ],
 
     'products' => [
-        'single'   => 'Product',
+        'single' => 'Product',
         'multiple' => 'Products',
     ],
 
     'reviews' => [
-        'single'   => 'Review',
+        'single' => 'Review',
         'multiple' => 'Reviews',
     ],
 

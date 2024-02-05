@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
             $callables[] = SizeSeeder::class;
         }
 
-        if (! DB::table('colours')->count()) {
-            $callables[] = ColourSeeder::class;
+        if (! DB::table('colors')->count()) {
+            $callables[] = ColorSeeder::class;
         }
 
         if (! DB::table('products')->count()) {

@@ -6,15 +6,15 @@ import {
 import { Checkbox } from '@/components/ui/checkbox'
 import { toTitleCase } from '@/lib/utils'
 import useFiltersStore from '@/store/filters.store'
-import { COLLECTIONS } from '../../constants'
+import { COLLECTIONS } from '../../../../constants'
 
 export const CollectionFilter = () => {
-    const genders = useFiltersStore((s) => s.collections)
-    const setGenders = useFiltersStore((s) => s.setCollections)
+    const collections = useFiltersStore((s) => s.collections)
+    const setCollections = useFiltersStore((s) => s.setCollections)
 
     return (
-        <AccordionItem value="gender">
-            <AccordionTrigger className="text-base">Gender</AccordionTrigger>
+        <AccordionItem value="collection">
+            <AccordionTrigger className="pt-0">Collection</AccordionTrigger>
 
             <AccordionContent>
                 <div className="flex flex-col space-y-2">
@@ -24,12 +24,12 @@ export const CollectionFilter = () => {
                             id={c}
                             value={c}
                             label={toTitleCase(c)}
-                            checked={genders.includes(c)}
+                            checked={collections.includes(c)}
                             onCheckedChange={(checked) => {
-                                setGenders(
+                                setCollections(
                                     checked
-                                        ? [...genders, c]
-                                        : genders.filter((g) => g !== c),
+                                        ? [...collections, c]
+                                        : collections.filter((g) => g !== c),
                                 )
                             }}
                         />

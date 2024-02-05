@@ -1,7 +1,7 @@
 import { CollectionFilter } from './CollectionFilter'
-import { ColourFilter } from './ColourFilter'
+import { ColorFilter } from './ColorFilter'
 import { PriceFilter } from './PriceFilter'
 import { SizeFilter } from './SizeFilter'
 import { SortByFilter } from './SortByFilter'
 
-export { CollectionFilter, ColourFilter, PriceFilter, SizeFilter, SortByFilter }
+export { CollectionFilter, ColorFilter, PriceFilter, SizeFilter, SortByFilter }

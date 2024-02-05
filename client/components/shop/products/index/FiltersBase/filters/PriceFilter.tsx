@@ -25,7 +25,7 @@ export const PriceFilter = () => {
 
     return (
         <AccordionItem value="price">
-            <AccordionTrigger className="text-base">Price</AccordionTrigger>
+            <AccordionTrigger>Price</AccordionTrigger>
 
             <AccordionContent>
                 <div className="flex flex-col space-y-3">
@@ -55,6 +55,7 @@ export const PriceFilter = () => {
                                 customInput={Input}
                                 placeholder="min"
                                 allowNegative={false}
+                                className="h-8"
                             />
                         </div>
 
@@ -73,6 +74,7 @@ export const PriceFilter = () => {
                                 customInput={Input}
                                 placeholder="max"
                                 allowNegative={false}
+                                className="h-8"
                             />
                         </div>
                     </div>

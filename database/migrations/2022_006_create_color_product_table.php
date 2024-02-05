@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,11 +13,10 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('colours', function (Blueprint $table) {
+        Schema::create('color_product', function (Blueprint $table) {
             $table->id();
-            $table->string('value');
-            $table->string('hex_code');
-            $table->timestamps();
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('color_id');
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('colours');
+        Schema::dropIfExists('color_product');
     }
 };

@@ -28,8 +28,7 @@ export const useAuth = ({
 
     const { data: user, error } = useQuery({
         queryKey: [RQ_AUTH_USER_KEY],
-        queryFn: (): Promise<UserEntity> =>
-            axios.get('/user').then((res) => res.data),
+        queryFn: (): Promise<UserEntity> => axios.get('/user'),
     })
 
     /**

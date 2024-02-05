@@ -18,10 +18,10 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'fname'          => fake()->firstName(),
-            'lname'          => fake()->lastName(),
-            'email'          => fake()->unique()->safeEmail(),
-            'password'       => 'password', // will be hashed on creation because of the cast: check Models/User.php
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'email' => fake()->unique()->safeEmail(),
+            'password' => 'password', // will be hashed on creation because of the cast: check Models/User.php
             'remember_token' => Str::random(10),
         ];
     }

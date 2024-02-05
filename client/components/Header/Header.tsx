@@ -2,15 +2,15 @@
 
 import { ROUTES } from '@/lib/routes'
 import { IconMenu2 } from '@tabler/icons-react'
+import Link from 'next/link'
 import { useState } from 'react'
+import { Logo } from '../common/Logo'
 import { Button } from '../ui/button'
 import { AuthDropdown } from './AuthDropdown'
+import { CartTrigger } from './CartTrigger'
 import { MobileMenu } from './MobileMenu'
 import { NavItem } from './NavItem'
 import { ThemeSwitcher } from './ThemeSwitcher'
-import Link from 'next/link'
-import { CartTrigger } from './CartTrigger'
-import { Logo } from '../common/Logo'
 
 export const Header = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -21,7 +21,7 @@ export const Header = () => {
                 <div className="container">
                     <div className="h-full flex items-center justify-between">
                         {/* left side */}
-                        <div className="flex items-center space-x-10">
+                        <div className="flex items-center space-x-10 -ml-[5px]">
                             <Link href={ROUTES.APP.INDEX}>
                                 <Logo />
                             </Link>

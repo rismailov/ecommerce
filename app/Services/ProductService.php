@@ -2,33 +2,31 @@
 
 namespace App\Services;
 
-use App\Models\Colour;
+use App\Models\Color;
 use App\Models\Size;
 
 class ProductService
 {
     public function getSizeOptions()
     {
-        return Size::select(['id', 'value', 'gender'])->get()
+        return Size::select(['id', 'value', 'collection'])->get()
             ->map(function ($size) {
                 return [
-                    // ID's have to be in string format because of the Mantine UI library
                     'value' => (string) $size['id'],
                     'label' => $size['value'],
-                    'gender' => $size['gender'],
+                    'collection' => $size['collection'],
                 ];
             });
     }
 
-    public function getColourOptions()
+    public function getColorOptions()
     {
-        return Colour::select(['id', 'value', 'hex_code'])->get()
-            ->map(function ($colour) {
+        return Color::select(['id', 'value', 'hex_code'])->get()
+            ->map(function ($color) {
                 return [
-                    // ID's have to be in string format because of the Mantine UI library
-                    'value' => (string) $colour->id,
-                    'label' => __('models.colours.values.'.$colour->value),
-                    'hex' => $colour->hex_code,
+                    'value' => (string) $color->id,
+                    'label' => __('models.colors.values.'.$color->value),
+                    'hex' => $color->hex_code,
                 ];
             });
     }
