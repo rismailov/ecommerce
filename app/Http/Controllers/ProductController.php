@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GetProductsRequest;
 use App\Http\Resources\ProductsResource;
-use App\Http\Resources\ReviewResource;
 use App\Http\Resources\ShowProductResource;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
@@ -74,12 +73,10 @@ class ProductController extends Controller
                 ];
             });
 
-        return response()->json([
-            'product' => ShowProductResource::make($product),
-            'reviews' => ReviewResource::collection(
-                $product->reviews()->latest()->paginate(5)
-            )->response()->getData(),
-        ]);
-
+        return response()->json(
+            ShowProductResource::make(
+                $product->loadCount('reviews')
+            ),
+        );
     }
 }

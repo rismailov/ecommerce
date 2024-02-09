@@ -43,6 +43,7 @@ class ShowProductResource extends JsonResource
                     'url' => $img->url,
                 ];
             }),
+            'reviewsCount' => $this->reviews_count,
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GetFilterOptionsController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\User\SettingsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,4 +25,9 @@ Route::get('/filter-options', GetFilterOptionsController::class);
 Route::prefix('/products')->as('products.')->group(function () {
     Route::get('/', [ProductController::class, 'index']);
     Route::get('/{product:nanoid}', [ProductController::class, 'show']);
+});
+
+// reviews
+Route::prefix('/reviews')->as('reviews.')->group(function () {
+    Route::get('/{product}', [ReviewsController::class, 'index']);
 });
