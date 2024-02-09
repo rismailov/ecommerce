@@ -31,4 +31,5 @@ export interface ProductShowEntity extends ProductEntityBase {
         url: string
         order: number
     }[]
+    reviewsCount: number
 }

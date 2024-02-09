@@ -78,7 +78,7 @@ export const AddToCartForm = (product: ProductShowEntity) => {
                 <Button
                     onClick={onAddItem}
                     size="lg"
-                    className="rounded-full h-12 md:h-14 w-full md:w-2/4 lg:w-3/4 text-sm md:text-base"
+                    className="rounded-full h-12 md:h-14 w-full md:w-2/4 lg:w-[400px] text-sm md:text-base"
                 >
                     Add to Cart
                 </Button>

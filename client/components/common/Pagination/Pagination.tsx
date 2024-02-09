@@ -38,6 +38,7 @@ export const Pagination = ({ total, page, onPageChange }: TPaginationProps) => {
             pageLinkClassName={classes.button}
             activeLinkClassName="!bg-primary text-primary-foreground border-primary"
             breakClassName="px-2"
+            disabledClassName="opacity-40 dark:opacity-60 pointer-events-none"
         />
     )
 }

@@ -80,6 +80,7 @@ export const DesktopSlider = ({ product }: { product: ProductShowEntity }) => {
                     className="w-[50px] h-[50px] absolute top-[calc(50%-25px)] left-[-22.5px] z-[5] rounded-full border disabled:shadow-none bg-white dark:border-zinc-300 dark:text-zinc-700 hover:bg-zinc-100"
                     onClick={() => mainSwiperRef.current?.slidePrev()}
                     disabled={mainActiveIndex === 0}
+                    aria-label="Previous slide"
                 >
                     <IconChevronLeft className="sprite sprite-lg" />
                 </Button>
@@ -111,6 +112,7 @@ export const DesktopSlider = ({ product }: { product: ProductShowEntity }) => {
                     className="w-[50px] h-[50px] absolute top-[calc(50%-25px)] right-[-22.5px] z-[5] rounded-full border disabled:shadow-none bg-white dark:border-zinc-300 dark:text-zinc-700 hover:bg-zinc-100"
                     onClick={() => mainSwiperRef.current?.slideNext()}
                     disabled={mainActiveIndex === product.images.length - 1}
+                    aria-label="Next slide"
                 >
                     <IconChevronRight className="sprite sprite-lg" />
                 </Button>
@@ -124,6 +126,7 @@ export const DesktopSlider = ({ product }: { product: ProductShowEntity }) => {
                     className="h-[calc(100%-2px)] max-w-[30px] mt-px select-none bg-muted"
                     onClick={() => thumbsSwiperRef.current?.slidePrev()}
                     disabled={isBeginning}
+                    aria-label="Previous slides"
                 >
                     <IconChevronLeft className="sprite sprite-lg" />
                 </Button>
@@ -158,6 +161,7 @@ export const DesktopSlider = ({ product }: { product: ProductShowEntity }) => {
                     className="h-[calc(100%-2px)] max-w-[30px] mt-px select-none bg-muted"
                     onClick={() => thumbsSwiperRef.current?.slideNext()}
                     disabled={isEnd}
+                    aria-label="Next slides"
                 >
                     <IconChevronRight className="sprite sprite-lg" />
                 </Button>

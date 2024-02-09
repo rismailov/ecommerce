@@ -12,6 +12,7 @@ export const CartTrigger = () => {
             variant="outline"
             onClick={toggleCart}
             className="relative"
+            aria-label="Open cart"
         >
             <IconShoppingCart className="w-4.5 h-4.5" />
 

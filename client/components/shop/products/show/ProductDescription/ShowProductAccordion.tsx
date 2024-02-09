@@ -5,17 +5,13 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from '@/components/ui/accordion'
-import { TPaginatedData } from '@/types'
 import { ProductShowEntity } from '@/types/entities/product.entity'
-import { ReviewEntity } from '@/types/entities/review.entity'
 import { Reviews } from './Reviews'
 
 export const ShowProductAccordion = ({
     product,
-    reviews,
 }: {
     product: ProductShowEntity
-    reviews: TPaginatedData<ReviewEntity[]>
 }) => {
     return (
         <Accordion type="multiple" className="pt-5">
@@ -37,7 +33,7 @@ export const ShowProductAccordion = ({
                 className="py-4 border-b-transparent"
             >
                 <AccordionTrigger className="font-semibold text-xl hover:no-underline [&_svg]:w-5 [&_svg]:h-5">
-                    {`Reviews (${reviews.meta.total})`}
+                    {`Reviews (${product.reviewsCount})`}
                 </AccordionTrigger>
 
                 <AccordionContent>
@@ -55,7 +51,7 @@ export const ShowProductAccordion = ({
                                 .replace('.', ',')} stars`}</p>
                         </div>
 
-                        <Reviews productID={product.id} reviews={reviews} />
+                        <Reviews productID={product.id} />
                     </div>
                 </AccordionContent>
             </AccordionItem>
