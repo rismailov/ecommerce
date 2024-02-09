@@ -16,8 +16,7 @@ export const ProductCard = ({
 
     return (
         <Link
-            // href={route('products.show', { product: product.nanoid })}
-            href="/booyah"
+            href={`/shop/${product.nanoid}`}
             className="w-full inline-flex flex-col"
         >
             {/* Image */}
@@ -35,7 +34,7 @@ export const ProductCard = ({
             {/* Description */}
             <motion.div
                 layout="position"
-                className="flex flex-col items-start space-y-1.5 py-3"
+                className="flex flex-col items-start space-y-0.5 py-3"
             >
                 {/* name */}
                 <p className="text-lg font-medium leading-tight">{`Nike ${product.name}`}</p>

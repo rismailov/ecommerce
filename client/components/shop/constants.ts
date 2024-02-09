@@ -7,4 +7,8 @@ export const SORT_OPTIONS: { value: TSortValue; label: string }[] = [
     { value: 'price-asc', label: 'Price: Low to high' },
 ]
 
-export const COLLECTIONS = ['men', 'women', 'kids']
+export const COLLECTIONS = {
+    MEN: 'men',
+    WOMEN: 'women',
+    KIDS: 'kids',
+}

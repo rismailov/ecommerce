@@ -5,6 +5,7 @@ import { IconMenu2 } from '@tabler/icons-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { Logo } from '../common/Logo'
+import { COLLECTIONS } from '../shop/constants'
 import { Button } from '../ui/button'
 import { AuthDropdown } from './AuthDropdown'
 import { CartTrigger } from './CartTrigger'
@@ -27,12 +28,16 @@ export const Header = () => {
                             </Link>
 
                             <nav className="hidden sm:flex items-center justify-center space-x-4">
-                                <NavItem href={ROUTES.SHOP.INDEX}>All</NavItem>
-                                <NavItem href={ROUTES.SHOP.MEN}>Men</NavItem>
-                                <NavItem href={ROUTES.SHOP.WOMEN}>
+                                <NavItem>All</NavItem>
+                                <NavItem collection={COLLECTIONS.MEN}>
+                                    Men
+                                </NavItem>
+                                <NavItem collection={COLLECTIONS.WOMEN}>
                                     Women
                                 </NavItem>
-                                <NavItem href={ROUTES.SHOP.KIDS}>Kids</NavItem>
+                                <NavItem collection={COLLECTIONS.KIDS}>
+                                    Kids
+                                </NavItem>
                             </nav>
                         </div>
 

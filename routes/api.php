@@ -23,4 +23,5 @@ Route::get('/filter-options', GetFilterOptionsController::class);
 // products
 Route::prefix('/products')->as('products.')->group(function () {
     Route::get('/', [ProductController::class, 'index']);
+    Route::get('/{product:nanoid}', [ProductController::class, 'show']);
 });

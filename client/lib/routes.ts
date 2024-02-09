@@ -8,9 +8,6 @@ export const ROUTES = {
 
     SHOP: {
         INDEX: `${SHOP_PREFIX}/`,
-        MEN: `${SHOP_PREFIX}/men`,
-        WOMEN: `${SHOP_PREFIX}/women`,
-        KIDS: `${SHOP_PREFIX}/kids`,
     },
 
     AUTH: {

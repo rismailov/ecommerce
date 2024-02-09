@@ -1,5 +1,5 @@
+import { COLLECTIONS } from '@/components/shop/constants'
 import { Button } from '@/components/ui/button'
-import { ROUTES } from '@/lib/routes'
 import { IconX } from '@tabler/icons-react'
 import { MobileMenuItem } from './MobileMenuItem'
 
@@ -32,21 +32,20 @@ export const MobileMenu = ({
             {/* body */}
             <div className="flex-1 py-4 px-6 flex flex-col">
                 <nav className="flex flex-col">
-                    <MobileMenuItem href={ROUTES.SHOP.MEN}>men</MobileMenuItem>
-                    <MobileMenuItem href={ROUTES.SHOP.WOMEN}>
+                    <MobileMenuItem close={close}>all</MobileMenuItem>
+                    <MobileMenuItem collection={COLLECTIONS.MEN} close={close}>
+                        men
+                    </MobileMenuItem>
+                    <MobileMenuItem
+                        collection={COLLECTIONS.WOMEN}
+                        close={close}
+                    >
                         women
                     </MobileMenuItem>
-                    <MobileMenuItem href={ROUTES.SHOP.KIDS}>
+                    <MobileMenuItem collection={COLLECTIONS.KIDS} close={close}>
                         kids
                     </MobileMenuItem>
                 </nav>
-            </div>
-
-            {/* footer */}
-            <div className="p-6 flex items-center space-x-3">
-                {/* <GithubLink className="w-1/2" />
-
-                <UpworkLink className="w-1/2" /> */}
             </div>
         </aside>
     )

@@ -1,3 +1,4 @@
+import { COLLECTIONS } from '@/components/shop/constants'
 import {
     AccordionContent,
     AccordionItem,
@@ -6,7 +7,6 @@ import {
 import { Checkbox } from '@/components/ui/checkbox'
 import { toTitleCase } from '@/lib/utils'
 import useFiltersStore from '@/store/filters.store'
-import { COLLECTIONS } from '../../../../constants'
 
 export const CollectionFilter = () => {
     const collections = useFiltersStore((s) => s.collections)
@@ -18,7 +18,7 @@ export const CollectionFilter = () => {
 
             <AccordionContent>
                 <div className="flex flex-col space-y-2">
-                    {COLLECTIONS.map((c) => (
+                    {Object.values(COLLECTIONS).map((c) => (
                         <Checkbox
                             key={c}
                             id={c}

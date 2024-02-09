@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/providers/theme-provider'
 import type { Metadata } from 'next'
 import './globals.css'
 import { Toaster } from '@/components/ui/sonner'
+import { Cart } from '@/components/shop/Cart'
 
 export const metadata: Metadata = {
     title: 'NikeCommerce',
@@ -25,6 +26,8 @@ export default function RootLayout({
                 )}
             >
                 <Toaster />
+
+                <Cart />
 
                 <ThemeProvider
                     attribute="class"

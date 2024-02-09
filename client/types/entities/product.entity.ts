@@ -22,6 +22,7 @@ export interface ProductShowEntity extends ProductEntityBase {
     availableColors: {
         nanoid: string
         image: string
+        color: string
     }[]
     color: string
     availableSizes: { value: string; label: number }[]

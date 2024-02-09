@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GetProductsRequest;
 use App\Http\Resources\ProductsResource;
+use App\Http\Resources\ReviewResource;
+use App\Http\Resources\ShowProductResource;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 
@@ -54,5 +56,30 @@ class ProductController extends Controller
             ProductsResource::collection($products)
                 ->response()->getData()
         );
+    }
+
+    public function show(Product $product)
+    {
+        // available colors on products from the same category.
+        // this is needed for user to select a different color
+        $product->availableColors = Product::with(['images', 'colors'])
+            ->whereName($product->name)
+            ->select(['id', 'nanoid'])
+            ->get()
+            ->map(function ($product) {
+                return [
+                    'nanoid' => $product->nanoid,
+                    'image' => $product->images->where('order', 0)->first()->url,
+                    'color' => $product->colors[0]->value,
+                ];
+            });
+
+        return response()->json([
+            'product' => ShowProductResource::make($product),
+            'reviews' => ReviewResource::collection(
+                $product->reviews()->latest()->paginate(5)
+            )->response()->getData(),
+        ]);
+
     }
 }

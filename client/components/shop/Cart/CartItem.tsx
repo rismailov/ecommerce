@@ -34,13 +34,13 @@ export const CartItem = ({
     return (
         <div className="flex items-stretch overflow-hidden space-x-4">
             {/* ITEM IMAGE */}
-            <img
+            {/* <img
                 src={cartItem.imageUrl}
                 className={clsx(
                     'object-center object-cover',
                     variant === 'cart' ? 'w-24' : 'w-24',
                 )}
-            />
+            /> */}
 
             {/* ITEM INFO */}
             <div className="flex-1 flex flex-col items-start justify-between">
