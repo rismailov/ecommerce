@@ -3,6 +3,7 @@
 import { Pagination } from '@/components/common/Pagination'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
+import { RQ_REVIEWS_KEY } from '@/constants'
 import axios from '@/lib/axios'
 import { TPaginatedData } from '@/types'
 import { ReviewEntity } from '@/types/entities/review.entity'
@@ -16,7 +17,7 @@ export const Reviews = ({ productID }: { productID: number }) => {
     const [page, setPage] = useState<number>(1)
 
     const { data, isLoading } = useQuery({
-        queryKey: ['reviews', productID, page],
+        queryKey: [RQ_REVIEWS_KEY, productID, page],
         queryFn: (): Promise<TPaginatedData<ReviewEntity[]>> =>
             axios.get(`/reviews/${productID}`, {
                 params: {

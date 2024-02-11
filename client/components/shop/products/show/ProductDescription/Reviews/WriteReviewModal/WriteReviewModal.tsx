@@ -30,7 +30,10 @@ export const WriteReviewModal = ({
                 </DialogHeader>
 
                 {user ? (
-                    <WriteReviewForm productID={productID} />
+                    <WriteReviewForm
+                        productID={productID}
+                        closeModal={() => setOpen(false)}
+                    />
                 ) : (
                     <div className="flex flex-col">
                         <p className="text-muted-foreground">

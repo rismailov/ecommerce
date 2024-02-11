@@ -30,4 +30,5 @@ Route::prefix('/products')->as('products.')->group(function () {
 // reviews
 Route::prefix('/reviews')->as('reviews.')->group(function () {
     Route::get('/{product}', [ReviewsController::class, 'index']);
+    Route::post('/{product}', [ReviewsController::class, 'store']);
 });

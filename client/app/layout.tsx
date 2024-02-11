@@ -1,11 +1,11 @@
+import { Providers } from '@/components/Providers'
 import { fontSans } from '@/components/font'
-import { Providers } from '@/components/providers'
+import { Cart } from '@/components/shop/Cart'
+import { Toaster } from '@/components/ui/sonner'
+import { ThemeProvider } from '@/context/theme-provider'
 import { cn } from '@/lib/utils'
-import { ThemeProvider } from '@/providers/theme-provider'
 import type { Metadata } from 'next'
 import './globals.css'
-import { Toaster } from '@/components/ui/sonner'
-import { Cart } from '@/components/shop/Cart'
 
 export const metadata: Metadata = {
     title: 'NikeCommerce',

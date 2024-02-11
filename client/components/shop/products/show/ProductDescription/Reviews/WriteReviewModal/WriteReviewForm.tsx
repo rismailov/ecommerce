@@ -10,11 +10,24 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { RQ_REVIEWS_KEY } from '@/constants'
+import axios from '@/lib/axios'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { isAxiosError } from 'axios'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
-export const WriteReviewForm = ({ productID }: { productID: number }) => {
+export const WriteReviewForm = ({
+    productID,
+    closeModal,
+}: {
+    productID: number
+    closeModal: () => void
+}) => {
+    const queryClient = useQueryClient()
+
     const schema = z.object({
         title: z.string().min(2, 'Title must have at least 2 characters.'),
         text: z.string().min(2, 'Text must have at least 2 characters.'),
@@ -30,13 +43,35 @@ export const WriteReviewForm = ({ productID }: { productID: number }) => {
         },
     })
 
-    const onSubmit = async (data: z.infer<typeof schema>) => {
-        console.log({ data, productID })
+    const { mutateAsync } = useMutation({
+        mutationFn: ({
+            productID,
+            data,
+        }: {
+            productID: number
+            data: z.infer<typeof schema>
+        }): Promise<{ message: string }> =>
+            axios.post(`/reviews/${productID}`, data),
+        meta: { setError: form.setError },
+        onSuccess: () => {
+            queryClient.invalidateQueries({
+                queryKey: [RQ_REVIEWS_KEY],
+            })
+        },
+    })
 
-        // submit form
-        // reset form
-        // close modal
-        // toast on error (errors[0])
+    const onSubmit = async (data: z.infer<typeof schema>) => {
+        try {
+            const { message } = await mutateAsync({ productID, data })
+
+            form.reset()
+            closeModal()
+            toast(message)
+        } catch (error) {
+            if (isAxiosError(error) && error.response?.data.message) {
+                toast(error.response.data.message)
+            }
+        }
     }
 
     return (
