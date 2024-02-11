@@ -85,7 +85,7 @@ export const Products = ({
 
     return (
         <div className="flex-1 flex flex-col pb-16">
-            <div className="grid xs:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
                 {isLoading &&
                     Array.from({ length: 6 }, (_, i) => (
                         <div key={i} className="flex flex-col space-y-3 mb-5">

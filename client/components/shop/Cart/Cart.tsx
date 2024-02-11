@@ -84,10 +84,10 @@ export const Cart = () => {
                 </SheetHeader>
 
                 <div className="flex-1 overflow-y-auto">
-                    <AnimatePresence mode="popLayout">
-                        {!items.length ? (
-                            <NoProductsInCart />
-                        ) : (
+                    {!items.length ? (
+                        <NoProductsInCart />
+                    ) : (
+                        <AnimatePresence mode="popLayout">
                             <ScrollArea
                                 className={cn(
                                     'h-full',
@@ -116,8 +116,8 @@ export const Cart = () => {
                                     ))}
                                 </div>
                             </ScrollArea>
-                        )}
-                    </AnimatePresence>
+                        </AnimatePresence>
+                    )}
                 </div>
 
                 <SheetFooter>
