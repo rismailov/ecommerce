@@ -8,6 +8,7 @@ export const ROUTES = {
 
     SHOP: {
         INDEX: `${SHOP_PREFIX}/`,
+        CHECKOUT: `${SHOP_PREFIX}/checkout`,
     },
 
     AUTH: {

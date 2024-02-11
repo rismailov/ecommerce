@@ -1,12 +1,17 @@
 'use client'
 
-import { useIsMounted } from '@/hooks/use-is-mounted'
 import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 import { Button } from '../ui/button'
 
 export const ThemeSwitcher = () => {
-    const { isMounted } = useIsMounted()
     const { theme, setTheme } = useTheme()
+
+    const [isMounted, setIsMounted] = useState(false)
+
+    useEffect(() => {
+        setIsMounted(true)
+    }, [setIsMounted])
 
     return (
         <Button

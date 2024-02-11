@@ -11,12 +11,33 @@ import {
     SheetHeader,
     SheetTitle,
 } from '@/components/ui/sheet'
-import { sleep } from '@/lib/utils'
+import { ROUTES } from '@/lib/routes'
+import { cn, sleep } from '@/lib/utils'
 import useCartStore from '@/store/cart.store'
-import { IconBox, IconShoppingCart } from '@tabler/icons-react'
+import { IconBox } from '@tabler/icons-react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { CartItem } from './CartItem'
+import { NoProductsInCart } from './NoProductsInCart'
+
+const cartItemVariant = {
+    initial: {
+        opacity: 0,
+        y: -10,
+    },
+    animate: {
+        opacity: 1,
+        y: 0,
+    },
+    exit: {
+        opacity: 0,
+        y: -10,
+        transition: {
+            duration: 0,
+        },
+    },
+}
 
 export const Cart = () => {
     const { isCartOpened, toggleCart, items } = useCartStore((s) => ({
@@ -28,15 +49,14 @@ export const Cart = () => {
     // show loader on checkout button; purely cosmetical, safe to remove
     const [isLoading, setIsLoading] = useState(false)
 
+    const router = useRouter()
+
     const checkout = async () => {
         setIsLoading(true)
 
         await sleep()
 
-        // router.visit(route('checkout'), {
-        //     preserveScroll: true,
-        //     preserveState: true,
-        // })
+        router.push(ROUTES.SHOP.CHECKOUT)
 
         toggleCart()
         setIsLoading(false)
@@ -66,42 +86,23 @@ export const Cart = () => {
                 <div className="flex-1 overflow-y-auto">
                     <AnimatePresence mode="popLayout">
                         {!items.length ? (
-                            <div className="h-full flex flex-col items-center justify-center pb-8">
-                                <p className="mb-4 text-muted-foreground text-center">
-                                    Nothing here.
-                                    <br />
-                                    Visit store to add some products.
-                                </p>
-
-                                <div className="w-20 h-20 border border-dashed flex items-center justify-center rounded-full">
-                                    <IconShoppingCart
-                                        className="w-8 h-8 text-muted-foreground"
-                                        strokeWidth={1.5}
-                                    />
-                                </div>
-                            </div>
+                            <NoProductsInCart />
                         ) : (
-                            <ScrollArea className="h-full">
-                                <div className="flex flex-col space-y-5">
+                            <ScrollArea
+                                className={cn(
+                                    'h-full',
+                                    items.length > 4 && 'pr-5',
+                                )}
+                            >
+                                <div className="flex flex-col">
                                     {items.map((item, idx) => (
                                         <motion.div
                                             key={item.id}
                                             layout
-                                            initial={{
-                                                opacity: 0,
-                                                y: -10,
-                                            }}
-                                            animate={{
-                                                opacity: 1,
-                                                y: 0,
-                                            }}
-                                            exit={{
-                                                opacity: 0,
-                                                y: -10,
-                                                transition: {
-                                                    duration: 0,
-                                                },
-                                            }}
+                                            variants={cartItemVariant}
+                                            initial="initial"
+                                            animate="animate"
+                                            exit="exit"
                                         >
                                             <CartItem
                                                 cartItem={item}
@@ -109,7 +110,7 @@ export const Cart = () => {
                                             />
 
                                             {idx !== items.length - 1 && (
-                                                <Separator className="mt-5" />
+                                                <Separator className="my-5" />
                                             )}
                                         </motion.div>
                                     ))}
