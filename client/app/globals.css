@@ -93,7 +93,7 @@
 
     /* typography */
     h1 {
-        @apply text-4xl font-semibold lg:text-5xl tracking-tight;
+        @apply text-3xl font-bold lg:text-4xl tracking-tight;
     }
 
     h2 {
